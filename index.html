@@ -25,67 +25,12 @@
     </header>
 
     <div class="conversa">
-        <div class="status-entrada bubble">
-            <div class="hora"><h6>(09:21:45)</h6></div>
-            <p><span class="nome">João</span> entra na sala...</p>
-        </div>
-        <div class="mensagem-normal bubble">
-            <div class="hora"><h6>(09:22:28)</h6></div>
-            <p><span class="nome">João</span> para <span class="nome">Todos</span>: <span class="cont-men">Bom dia</span></p>
-        </div>
-        <div class="mensagem-normal bubble">
-            <div class="hora"><h6>(09:22:38)</h6></div>
-            <p><span class="nome">Maria</span> para <span class="nome">João</span>: <span class="cont-men">Oi João :)</span></p>
-        </div>
-        <div class="mensagem-privada bubble">
-            <div class="hora"><h6>(09:22:48)</h6></div>
-            <p><span class="nome">João</span> reservadamente para <span class="nome">Maria</span>: <span class=cont-men>Oi gatinha quer tc?</span></p>
-        </div>
-        <div class="status-saida bubble">
-            <div class="hora"><h6>(09:22:58)</h6></div>
-            <p><span class="nome">Maria</span> sai da sala...</p>
-        </div>
-        <div class="mensagem-normal bubble">
-            <div class="hora"><h6>(09:22:38)</h6></div>
-            <p><span class="nome">Maria</span> para <span class="nome">João</span>: <span class="cont-men">Oi João :)</span></p>
-        </div>
-        <div class="mensagem-privada bubble">
-            <div class="hora"><h6>(09:22:48)</h6></div>
-            <p><span class="nome">João</span> reservadamente para <span class="nome">Maria</span>: <span class=cont-men>Oi gatinha quer tc?</span></p>
-        </div>
-        <div class="status-saida bubble">
-            <div class="hora"><h6>(09:22:58)</h6></div>
-            <p><span class="nome">Maria</span> sai da sala...</p>
-        </div>
-        <div class="mensagem-normal bubble">
-            <div class="hora"><h6>(09:22:38)</h6></div>
-            <p><span class="nome">Maria</span> para <span class="nome">João</span>: <span class="cont-men">Oi João :)</span></p>
-        </div>
-        <div class="mensagem-privada bubble">
-            <div class="hora"><h6>(09:22:48)</h6></div>
-            <p><span class="nome">João</span> reservadamente para <span class="nome">Maria</span>: <span class=cont-men>Oi gatinha quer tc?</span></p>
-        </div>
-        <div class="status-saida bubble">
-            <div class="hora"><h6>(09:22:58)</h6></div>
-            <p><span class="nome">Maria</span> sai da sala...</p>
-        </div>
-        <div class="mensagem-normal bubble">
-            <div class="hora"><h6>(09:22:38)</h6></div>
-            <p><span class="nome">Maria</span> para <span class="nome">João</span>: <span class="cont-men">Oi João :)</span></p>
-        </div>
-        <div class="mensagem-privada bubble">
-            <div class="hora"><h6>(09:22:48)</h6></div>
-            <p><span class="nome">João</span> reservadamente para <span class="nome">Maria</span>: <span class=cont-men>Oi gatinha quer tc?</span></p>
-        </div>
-        <div class="status-saida bubble">
-            <div class="hora"><h6>(09:22:58)</h6></div>
-            <p><span class="nome">Maria</span> sai da sala...</p>
-        </div>
+
     </div>
 
     <div class="botao-mensagem">
-        <input type="text" placeholder="Escreva aqui..."></p>
-        <ion-icon name="paper-plane-outline"></ion-icon>
+        <input type="text" id="Mensagem" placeholder="Escreva aqui..."></p>
+        <button onclick="capturaInput()"><ion-icon name="paper-plane-outline"></ion-icon></button>
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
