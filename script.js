@@ -38,23 +38,18 @@ function processarResposta(resposta) {
 
 // Função para receber as mensagens.
 let mensagens = []; // Cria array vazio para poder preenchê-lo com informações da API.
-const reqMsg = axios.get('https://mock-api.driven.com.br/api/v6/uol/messages');
+atualizaPfvr();
+setInterval(atualizaPfvr, 3000);
 
-reqMsg.then(mensagensChegaram);
+function atualizaPfvr() {
+    let reqMsg = axios.get('https://mock-api.driven.com.br/api/v6/uol/messages');
+    reqMsg.then(mensagensChegaram);
+}
 
 function mensagensChegaram(msgs) {
     console.log(msgs.data)
     mensagens = msgs.data;
     renderizarMsgs();
-}
-
-// Função para enviar as mensagens.
-function capturaInput() {
-    var texto = document.getElementById('Mensagem').value;
-    const msgEnviada = axios.post('https://mock-api.driven.com.br/api/v6/uol/messages', {from: nick, to:"Todos", text:texto, type:"message"});
-}
-
-function envioMsg() {
 }
 
 // Função para renderizar as mensagens.
@@ -76,5 +71,10 @@ function renderizarMsgs() {
     }
 }
 
-// Função para atualizar as mensagens.
-
+// Função para enviar as mensagens.
+function capturaInput() {
+    var texto = document.getElementById('Mensagem').value;
+    const msgEnviada = axios.post('https://mock-api.driven.com.br/api/v6/uol/messages', {from: nick, to:"Todos", text:texto, type:"message"});
+    document.getElementById('Mensagem').value = "";
+    atualizaPfvr();
+}
