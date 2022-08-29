@@ -58,15 +58,19 @@ function renderizarMsgs() {
     chat.innerHTML = '';
 
     for(let i = 0; i < mensagens.length; i++) {
-        if (mensagens[i].type === "message") {
+        if (mensagens[i].type === "message" && mensagens[i].to === "Todos") {
             chat.innerHTML = chat.innerHTML + `<div class="mensagem-normal bubble"><div class="hora"><h6>${mensagens[i].time}</h6></div>
-            <p><span class="nome">${mensagens[i].from}</span> para <span class="nome">${mensagens[i].to}</span>: <span class="cont-men">${mensagens[i].text}</span></p>
-            </div>`
+            <p><span class="nome">${mensagens[i].from}</span> para <span class="nome">${mensagens[i].to}</span>: <span class="cont-men">${mensagens[i].text}</span></p></div>`
         } else if (mensagens[i].type === "status") {
             chat.innerHTML = chat.innerHTML + `<div class="status-entrada bubble"><div class="hora"><h6>${mensagens[i].time}</h6></div>
-            <p><span class="nome">${mensagens[i].from}</span> ${mensagens[i].text}</p>
-        </div>`
+            <p><span class="nome">${mensagens[i].from}</span> ${mensagens[i].text}</p></div>`
+        } else if (mensagens[i].type === "private_message" && mensagens[i].to === nick) {
+            chat.innerHTML = chat.innerHTML + `<div class="mensagem-privada bubble"><div class="hora"><h6>${mensagens[i].time}</h6></div>
+            <p><span class="nome">${mensagens[i].from}</span> para <span class="nome">${mensagens[i].to}</span>: <span class="cont-men">${mensagens[i].text}</span></p></div>`
+        } else if (mensagens[i].type === "private_message" && mensagens[i].to != nick) {
+            chat.innerHTML = chat.innerHTML
         }
+        
         chat.lastElementChild.scrollIntoView();
     }
 }
@@ -75,6 +79,20 @@ function renderizarMsgs() {
 function capturaInput() {
     var texto = document.getElementById('Mensagem').value;
     const msgEnviada = axios.post('https://mock-api.driven.com.br/api/v6/uol/messages', {from: nick, to:"Todos", text:texto, type:"message"});
+    msgEnviada.catch(erroMensagem)
+    function erroMensagem(erro) {
+        console.log("Mensagem de erro: " + erro.response.data);
+        alert("O usuário não está mais na sala.");
+        location.reload();
+    }
     document.getElementById('Mensagem').value = "";
     atualizaPfvr();
 }
+
+// Função para evniar as mensagens usando enter.
+const enter = document.getElementById('Mensagem');
+enter.addEventListener("keypress", function onEvent(event) {
+    if (event.key === "Enter") {
+        capturaInput();
+    }
+})
